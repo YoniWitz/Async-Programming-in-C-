@@ -1,0 +1,6 @@
+.vs
+StockAnalyzer.Web\bin
+StockAnalyzer.Web\obj
+
+StockAnalyzer.Windows\bin
+StockAnalyzer.Windows\obj
