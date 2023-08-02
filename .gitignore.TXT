@@ -1,10 +1,10 @@
-.vs
-StockAnalyzer.Web\bin
-StockAnalyzer.Web\obj
+/.vs
+/StockAnalyzer.Web/bin
+/StockAnalyzer.Web/obj
 
-StockAnalyzer.Windows\bin
-StockAnalyzer.Windows\obj
+/StockAnalyzer.Windows/bin
+/StockAnalyzer.Windows/obj
 
 
-StockAnalyzer.Core\bin
-StockAnalyzer.Core\obj
+/StockAnalyzer.Core/bin
+/StockAnalyzer.Core/obj
