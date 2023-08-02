@@ -22,7 +22,7 @@ public partial class MainWindow : Window
         InitializeComponent();
     }
 
-    private async void Search_Click(object sender, RoutedEventArgs e)
+    private void Search_Click(object sender, RoutedEventArgs e)
     {
         BeforeLoadingStockData();
 
@@ -37,6 +37,14 @@ public partial class MainWindow : Window
         //    Stocks.ItemsSource = data;
         //}
 
+
+        GetStocks();
+
+        AfterLoadingStockData();
+    }
+
+    private async void GetStocks()
+    {
         var store = new DataStore();
 
         try
@@ -45,12 +53,10 @@ public partial class MainWindow : Window
 
             Stocks.ItemsSource = await responseTask;
         }
-        catch(Exception ex)
+        catch (Exception ex)
         {
             Notes.Text = ex.Message;
         }
-
-        AfterLoadingStockData();
     }
 
     private void BeforeLoadingStockData()

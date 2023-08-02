@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "Estf4avG7TpAafL9I0QIlAwIEUJsIWyXasQ3QBS5UNktdAvo6jcDryETrw6h3gikKYcF2hJ7kMXZ+Dtr8u7TTg==",
+  "success": true,
+  "projectFilePath": "E:\\workspace\\C#\\Asynchronous Programming\\StockAnalyzer.Web\\StockAnalyzer.Web.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Yoni\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
+  ],
+  "logs": []
+}
