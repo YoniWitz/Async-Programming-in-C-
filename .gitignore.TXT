@@ -4,3 +4,7 @@ StockAnalyzer.Web\obj
 
 StockAnalyzer.Windows\bin
 StockAnalyzer.Windows\obj
+
+
+StockAnalyzer.Core\bin
+StockAnalyzer.Core\obj
