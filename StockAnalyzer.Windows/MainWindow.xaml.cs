@@ -1,9 +1,15 @@
 ﻿using StockAnalyzer.Core;
+using StockAnalyzer.Core.Domain;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Documents;
 using System.Windows.Navigation;
+using System.Windows.Threading;
 
 namespace StockAnalyzer.Windows;
 
@@ -17,23 +23,65 @@ public partial class MainWindow : Window
         InitializeComponent();
     }
 
-    private async void Search_Click(object sender, RoutedEventArgs e)
+    private void Search_Click(object sender, RoutedEventArgs e)
     {
         BeforeLoadingStockData();
 
-        //using (var client = new HttpClient())
-        //{
-        //    var response = await client.GetAsync($"{API_URL}/{StockIdentifier.Text}");
+        try
+        {
+            var data = new List<StockPrice>();
+            var myTask = Task.Run(() =>
+            {
+                try
+                {
+                    var lines = File.ReadAllLines("StockPrices_small.csv");
 
-        //    var content = await response.Content.ReadAsStringAsync();
+                    foreach (var line in lines.Skip(1))
+                    {
+                        var price = StockPrice.FromCSV(line);
 
-        //    var data = JsonConvert.DeserializeObject<IEnumerable<StockPrice>>(content);
+                        data.Add(price);
+                    }
+                    if (true)
+                        if (false) { }
+                        else
+                            throw new Exception();
+                }
+                catch (Exception ex)
+                {
+                    Dispatcher.Invoke(() =>
+                    {
+                        Notes.Text = ex.Message;
+                    });
+                }
+            });
 
-        //    Stocks.ItemsSource = data;
-        //}
+            myTask.ContinueWith(_ =>
+            {
+                Dispatcher.Invoke(() =>
+                {
+                    AfterLoadingStockData();
+                });
+            });
 
-        await GetStocks();
-        AfterLoadingStockData();
+            myTask.ContinueWith(completedTask =>
+            {
+                Dispatcher.Invoke(() =>
+                {
+                    Stocks.ItemsSource = data.Where(sp => sp.Identifier.Equals(StockIdentifier.Text));
+                });
+
+            },
+            TaskContinuationOptions.OnlyOnRanToCompletion);
+
+
+
+        }
+        catch (Exception ex)
+        {
+            Notes.Text = ex.Message;
+        }
+
     }
 
     private async Task GetStocks()
