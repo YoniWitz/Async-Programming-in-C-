@@ -20,7 +20,6 @@ public class HomeController : Controller
 
             var data = JsonConvert.DeserializeObject<IEnumerable<StockPrice>>(content);
 
-
             return View(data);
         }
     }

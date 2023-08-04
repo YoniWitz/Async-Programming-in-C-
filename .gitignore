@@ -1,0 +1,11 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/StockAnalyzer.Core/obj
+/.vs
+/StockAnalyzer.Web/obj
+/StockAnalyzer.Windows/obj
+/StockAnalyzer.Core/bin
+/StockAnalyzer.Web/bin
+/StockAnalyzer.Windows/bin
